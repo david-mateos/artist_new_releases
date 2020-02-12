@@ -8,7 +8,7 @@ Created on Wed Feb 12 14:26:42 2020
 import spotipy
 import spotipy.util as util
 
-username= '1297034112'
+username= '' #your user id
 scope = 'user-top-read'
 token = util.prompt_for_user_token(username, scope)
 
@@ -59,6 +59,10 @@ if token:
     
     # find the overlap between new release artists and my top artists
     new_music_artists = [value for value in new_artist_ids if value in my_top_artists]
+    
+    # in case you're not lucky this week
+    if len(new_music_artists) == 0:
+        new_music_artists.append("Your top Artists have not released new music this week")
 
 else:
     print("Can't get token for", username)
