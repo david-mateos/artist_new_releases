@@ -25,16 +25,12 @@ if token:
     while response:
     
         albums = response['albums']
-        
         for i, item in enumerate(albums['items']):
-            
             for j, artist in enumerate(item['artists']):
-                
                 new_artist_ids.append(artist['name'])
 
         if albums['next']:
             response = sp.next(albums)
-            
         else:
             response = None 
     
@@ -43,7 +39,6 @@ if token:
     for range in ranges:
         
         results = sp.current_user_top_artists(time_range=range, limit=50)
-        
         for i, item in enumerate(results['items']):
             my_top_artists.append(item['name'])
     
